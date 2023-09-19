@@ -7,8 +7,7 @@ service / on new http:Listener(8090) {
        string jsonString = check request.getTextPayload();
        json jsonObj = check value:fromJsonString(jsonString);
        string ip = <string> check jsonObj.ip;
-      //  string ip = "134.201.250.155";
-       
+     
        http:Client httpEndpoint = check new ("http://api.ipstack.com");
        http:Response getResponse = check httpEndpoint->get("/"+ip+"?access_key=12e6f06bf7f9ecf01ad7cec69f9830f1");
   
